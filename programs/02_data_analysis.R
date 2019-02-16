@@ -4,7 +4,7 @@
 #' 
 #' ## Preamble
 #+ libraries, warnings = F
-
+library(ggplot2)
 remove(list=ls())
 
 #' ## Load data
@@ -83,3 +83,116 @@ summary(winter.wren)
 
 yellow.b.sapsucker <- lm(Count ~ Year, data = counts.long[counts.long$Species == "Yellow-bellied Sapsucker",])
 summary(yellow.b.sapsucker)
+
+#' ## Plotting results
+#' 
+#' 
+#' Black-throated green warbler
+ggplot(black.th.gr.warbler$model, 
+       aes_string(x = names(black.th.gr.warbler$model)[2],
+                  y = names(black.th.gr.warbler$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Black-throated Green Warbler, ",
+                      "Adj R2 = ", round(signif(summary(black.th.gr.warbler)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(black.th.gr.warbler)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "blackThroatedGreenWarbler.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+
+
+#' Blue jay
+ggplot(blue.jay$model, 
+       aes_string(x = names(blue.jay$model)[2],
+                  y = names(blue.jay$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Blue Jay, ",
+                      "Adj R2 = ", round(signif(summary(blue.jay)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(blue.jay)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "blueJay.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Chestnut-sided Warbler
+ggplot(chestnut.warbler$model, 
+       aes_string(x = names(chestnut.warbler$model)[2],
+                  y = names(chestnut.warbler$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Chestnut-sided Warbler, ",
+                      "Adj R2 = ", round(signif(summary(chestnut.warbler)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(chestnut.warbler)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "chestnutSidedWarbler.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Eastern wood pewee
+ggplot(wood.pewee$model, 
+       aes_string(x = names(wood.pewee$model)[2],
+                  y = names(wood.pewee$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Eastern Wood Pewee, ",
+                      "Adj R2 = ", round(signif(summary(wood.pewee)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(wood.pewee)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "easternWoodPewee.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Ovenbird
+ggplot(ovenbird$model, 
+       aes_string(x = names(ovenbird$model)[2],
+                  y = names(ovenbird$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Ovenbird, ",
+                      "Adj R2 = ", round(signif(summary(ovenbird)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(ovenbird)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "ovenbird.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Red-breasted Nuthatch
+ggplot(red.breast.nuthatch$model, 
+       aes_string(x = names(red.breast.nuthatch$model)[2],
+                  y = names(red.breast.nuthatch$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Red-breasted Nuthatch, ",
+                      "Adj R2 = ", round(signif(summary(red.breast.nuthatch)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(red.breast.nuthatch)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "redBreastedNuthatch.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Red-eyed Vireo
+ggplot(red.vireo$model, 
+       aes_string(x = names(red.vireo$model)[2],
+                  y = names(red.vireo$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Red-eyed Vireo, ",
+                      "Adj R2 = ", round(signif(summary(red.vireo)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(red.vireo)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "redEyedVireo.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Ruffed Grouse
+ggplot(ruffed.grouse$model, 
+       aes_string(x = names(ruffed.grouse$model)[2],
+                  y = names(ruffed.grouse$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Red-eyed Vireo, ",
+                      "Adj R2 = ", round(signif(summary(ruffed.grouse)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(ruffed.grouse)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "ruffedGrouse.png", device = "png", path = "presentations/2019_TWS/trend_plots")
+
+#' Scarlet Tanager
+ggplot(scarlet.tanager$model, 
+       aes_string(x = names(scarlet.tanager$model)[2],
+                  y = names(scarlet.tanager$model)[1]))+
+  geom_point()+
+  stat_smooth(method = "lm", col = "black")+
+  labs(title = paste0("Scarlet Tanager, ",
+                      "Adj R2 = ", round(signif(summary(scarlet.tanager)$adj.r.squared),digits = 2),
+                      "; p = ", round(signif(summary(scarlet.tanager)$coef[2,4],5), digits = 4)))+
+  theme_classic()
+#ggsave(filename = "scarletTanager.png", device = "png", path = "presentations/2019_TWS/trend_plots")
